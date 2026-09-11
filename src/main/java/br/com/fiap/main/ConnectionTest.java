@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class ConnectionTest {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Connection cn = new ConexaoFactory().conexao();
+        Connection cn = ConexaoFactory.conexao();
 
         System.out.println("Conectado ao Banco de Dados com sucesso!");
 
