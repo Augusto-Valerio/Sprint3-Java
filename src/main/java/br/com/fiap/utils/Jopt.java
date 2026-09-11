@@ -4,10 +4,9 @@ import javax.swing.*;
 
 public class Jopt {
 
-    public static void showMessage(String message) {
-        JOptionPane.showMessageDialog(null, message);
+    public static void showMessage(String message, String title) {
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
     }
-
     public static void showError(String message) {
         JOptionPane.showMessageDialog(null, message, "Erro", JOptionPane.ERROR_MESSAGE);
     }
