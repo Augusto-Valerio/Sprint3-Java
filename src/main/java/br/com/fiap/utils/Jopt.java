@@ -16,7 +16,7 @@ public class Jopt {
         String value = JOptionPane.showInputDialog(null, message);
 
         if (value == null || value.isBlank()) {
-            throw new IllegalArgumentException("Campo obrigatortio não informado.");
+            throw new IllegalArgumentException("Campo obrigatorio não informado.");
         }
 
         return value.trim();
