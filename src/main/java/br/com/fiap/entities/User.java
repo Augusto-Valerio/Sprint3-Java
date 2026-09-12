@@ -33,7 +33,7 @@ public class User {
         return userPassword;
     }
 
-    public void setUserPassword(String userPassWord) {
+    public void setUserPassword(String userPassword) {
         userPassword = userPassword;
     }
 
