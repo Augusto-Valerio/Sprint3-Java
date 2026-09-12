@@ -10,7 +10,7 @@ public class User {
 
     public User(String userName, String userPassword) {
         this.userName = userName;
-        userPassword = userPassword;
+        this.userPassword = userPassword;
     }
 
     public int getUserId() {
@@ -34,7 +34,7 @@ public class User {
     }
 
     public void setUserPassword(String userPassword) {
-        userPassword = userPassword;
+        this.userPassword = userPassword;
     }
 
     public boolean passwordMatches(String password) {
