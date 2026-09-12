@@ -1,7 +1,10 @@
 package br.com.fiap.jopanels;
 
+import br.com.fiap.entities.User;
 import br.com.fiap.utils.Jopt;
+
 import java.sql.SQLException;
+
 
 public class Init {
     public static void mainPanel() throws SQLException, ClassNotFoundException {
@@ -14,7 +17,16 @@ public class Init {
             int opt = Jopt.showOption(optJOp);
 
             if (opt == 0) {
-                Jopt.showMessage("Funcionalidade de Login em desenvolvimento...", "Sistema TOTVS");
+                Login login = new Login();
+                User userLogged = login.logar();
+                String jsonSucesso = ("Resultado Api TOTVS:" +
+                        "\n{\n  \"Success\": true,\n" +
+                        "  \"Message\": \"Login realizado com sucesso\",\n" +
+                        "  \"UserId\": %d,\n" +
+                        "  \"UserName\": \"%s\"\n}")
+                        .formatted(userLogged.getUserId(), userLogged.getUserName());
+
+                Jopt.showMessage(jsonSucesso, "Sistema TOTVS");
 
             } else if (opt == 1) {
                 Register registro = new Register();
