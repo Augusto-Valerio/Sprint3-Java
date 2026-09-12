@@ -3,11 +3,14 @@ package br.com.fiap.entities;
 public class User {
     private int userId;
     private String userName;
-    private String UserPassWord;
+    private String userPassword;
 
-    public User(String userName, String userPassWord) {
+    public User() {
+    }
+
+    public User(String userName, String userPassword) {
         this.userName = userName;
-        UserPassWord = userPassWord;
+        userPassword = userPassword;
     }
 
     public int getUserId() {
@@ -26,12 +29,16 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserPassWord() {
-        return UserPassWord;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setUserPassWord(String userPassWord) {
-        UserPassWord = userPassWord;
+    public void setUserPassword(String userPassWord) {
+        userPassword = userPassword;
+    }
+
+    public boolean passwordMatches(String password) {
+        return userPassword != null && userPassword.equals(password);
     }
 }
 

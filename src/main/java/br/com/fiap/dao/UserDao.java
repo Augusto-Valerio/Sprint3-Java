@@ -1,18 +1,20 @@
 package br.com.fiap.dao;
 
+import br.com.fiap.entities.User;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDao extends FactoryDao{
+public class UserDao extends FactoryDao {
     public UserDao() throws SQLException, ClassNotFoundException {
         super();
     }
 
-    public int createUser(String userName, String userPassWord)throws SQLException {
+    public int createUser(User user) throws SQLException {
         ResultSet rs = insert(
                 "INSERT INTO USUARIO (USER_NAME, USER_PASSWORD) VALUES (?, ?)",
-                userName,
-                userPassWord
+                user.getUserName(),
+                user.getUserPassword()
         );
 
         int id = 0;
