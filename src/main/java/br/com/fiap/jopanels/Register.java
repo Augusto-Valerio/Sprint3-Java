@@ -1,9 +1,11 @@
 package br.com.fiap.jopanels;
 
 import br.com.fiap.dao.ClientDao;
+import br.com.fiap.dao.CompanyClientDao;
 import br.com.fiap.dao.TotvsEmployeeDao;
 import br.com.fiap.dao.UserDao;
 import br.com.fiap.entities.Client;
+import br.com.fiap.entities.CompanyClient;
 import br.com.fiap.entities.TotvsEmployee;
 import br.com.fiap.entities.User;
 import br.com.fiap.utils.Jopt;
@@ -43,7 +45,24 @@ public class Register {
             String role = Jopt.input("Digite seu cargo:");
             String department = Jopt.input("Digite seu departamento:");
 
-            Client client = new Client(userName, userEmail, phone, role, department);
+            String companyName = Jopt.input("Digite o nome da empresa:");
+            String companyCnpj = Jopt.input("Digite o CNPJ da empresa:");
+            String companySegment = Jopt.input("Digite o segmento da empresa:");
+
+            CompanyClient company = new CompanyClient(companyName, companyCnpj, companySegment);
+
+            if (!company.validateName()) {
+                throw new IllegalArgumentException("Nome da empresa não pode ficar vazio.");
+            }
+
+            if (!company.validateCnpj()) {
+                throw new IllegalArgumentException("CNPJ não pode ficar vazio.");
+            }
+
+            CompanyClientDao companyDao = new CompanyClientDao();
+            int companyId = companyDao.createCompany(company);
+
+            Client client = new Client(companyId ,userName, userEmail, phone, role, department);
 
             ClientDao clientDao = new ClientDao();
             clientDao.createClient(client);

@@ -14,7 +14,8 @@ public class ClientDao extends FactoryDao {
 
     public int createClient(Client client) throws SQLException {
         insert(
-                "INSERT INTO CLIENTE (NOME, EMAIL, TELEFONE, CARGO, DEPARTAMENTO) VALUES (?, ?, ?, ?, ?)",
+                "INSERT INTO CLIENTE (ID_EMPRESA, NOME, EMAIL, TELEFONE, CARGO, DEPARTAMENTO) VALUES (?, ?, ?, ?, ?, ?)",
+                client.getCompanyId(),
                 client.getName(),
                 client.getEmail(),
                 client.getPhone(),
@@ -40,13 +41,14 @@ public class ClientDao extends FactoryDao {
 
     public Client findClientById(int clientId) throws SQLException {
         ResultSet rs = select(
-                "SELECT ID_CLIENTE, NOME, EMAIL, TELEFONE, CARGO, DEPARTAMENTO FROM CLIENTE WHERE ID_CLIENTE = ?",
+                "SELECT ID_CLIENTE, ID_EMPRESA, NOME, EMAIL, TELEFONE, CARGO, DEPARTAMENTO FROM CLIENTE WHERE ID_CLIENTE = ?",
                 clientId
         );
 
         if (rs.next()) {
             Client cliente = new Client(
                     rs.getInt("ID_CLIENTE"),
+                    rs.getInt("ID_EMPRESA"),
                     rs.getString("NOME"),
                     rs.getString("EMAIL"),
                     rs.getString("TELEFONE"),
@@ -66,12 +68,13 @@ public class ClientDao extends FactoryDao {
         ArrayList<Client> clients = new ArrayList<>();
 
         ResultSet rs = select(
-                "SELECT ID_CLIENTE, NOME, EMAIL, TELEFONE, CARGO, DEPARTAMENTO FROM CLIENTE ORDER BY ID_CLIENTE"
+                "SELECT ID_CLIENTE, ID_EMPRESA, NOME, EMAIL, TELEFONE, CARGO, DEPARTAMENTO FROM CLIENTE ORDER BY ID_CLIENTE"
         );
 
         while (rs.next()) {
             Client client = new Client(
                     rs.getInt("ID_CLIENTE"),
+                    rs.getInt("ID_EMPRESA"),
                     rs.getString("NOME"),
                     rs.getString("EMAIL"),
                     rs.getString("TELEFONE"),

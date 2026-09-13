@@ -2,6 +2,7 @@ package br.com.fiap.entities;
 
 public class Client {
     private int clientId;
+    private int companyId;
     private String name;
     private String email;
     private String phone;
@@ -19,8 +20,18 @@ public class Client {
         this.department = department;
     }
 
-    public Client(int clientId, String name, String email, String phone, String role, String department) {
+    public Client(int companyId, String name, String email, String phone, String role, String department) {
+        this.companyId = companyId;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.role = role;
+        this.department = department;
+    }
+
+    public Client(int clientId, int companyId, String name, String email, String phone, String role, String department) {
         this.clientId = clientId;
+        this.companyId = companyId;
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -42,6 +53,7 @@ public class Client {
 
     public String showData() {
         return "ID: " + clientId +
+                "\nID Empresa: " + companyId +
                 "\nNome: " + name +
                 "\nEmail: " + email +
                 "\nTelefone: " + phone +
@@ -54,23 +66,55 @@ public class Client {
         return clientId;
     }
 
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPhone() {
         return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getRole() {
         return role;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getDepartment() {
         return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }
