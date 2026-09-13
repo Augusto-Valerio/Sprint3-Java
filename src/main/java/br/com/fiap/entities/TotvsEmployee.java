@@ -3,6 +3,7 @@ package br.com.fiap.entities;
 public class TotvsEmployee {
 
     private int employeeId;
+    private int userId;
     private String name;
     private String email;
     private String role;
@@ -10,14 +11,16 @@ public class TotvsEmployee {
     public TotvsEmployee() {
     }
 
-    public TotvsEmployee(String name, String email, String role) {
+    public TotvsEmployee(int userId, String name, String email, String role) {
+        this.userId = userId;
         this.name = name;
         this.email = email;
         this.role = role;
     }
 
-    public TotvsEmployee(int employeeId, String name, String email, String role) {
+    public TotvsEmployee(int employeeId, int userId, String name, String email, String role) {
         this.employeeId = employeeId;
+        this.userId = userId;
         this.name = name;
         this.email = email;
         this.role = role;
@@ -37,6 +40,14 @@ public class TotvsEmployee {
 
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getName() {

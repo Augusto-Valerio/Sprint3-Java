@@ -13,7 +13,8 @@ public class TotvsEmployeeDao extends FactoryDao{
 
     public int createEmployee(TotvsEmployee employee) throws SQLException {
         insert(
-          "INSERT INTO FUNCIONARIO_TOTVS (NOME, EMAIL, CARGO) VALUES (?, ?, ?)",
+          "INSERT INTO FUNCIONARIO_TOTVS (USER_ID, NOME, EMAIL, CARGO) VALUES (?, ?, ?, ?)",
+          employee.getUserId(),
           employee.getName(),
           employee.getEmail(),
           employee.getRole()

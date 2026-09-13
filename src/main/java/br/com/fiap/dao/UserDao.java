@@ -20,8 +20,8 @@ public class UserDao extends FactoryDao {
         );
 
         ResultSet rs = select(
-                "SELECT USER_ID FROM USUARIO WHERE USER_NAME = ?",
-                user.getUserName()
+                "SELECT USER_ID FROM USUARIO WHERE USER_EMAIL = ?",
+                user.getUserEmail()
         );
 
         int id = 0;
