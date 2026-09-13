@@ -27,14 +27,6 @@ public class ApiResponse {
                 "}";
     }
 
-    public static String error(String message) {
-        return "Resultado Api TOTVS:\n" +
-                "{\n" +
-                "  \"success\": false,\n" +
-                "  \"error\": \"" + message + "\"\n" +
-                "}";
-    }
-
     public static String clientCreateSuccess(int id) {
         return "Resultado Api TOTVS:\n" +
                 "{\n" +
@@ -103,6 +95,14 @@ public class ApiResponse {
                 "{\n" +
                 "  \"success\": true,\n" +
                 "  \"message\": \"Cliente excluido com sucesso\"\n" +
+                "}";
+    }
+
+    public static String error(String message) {
+        return "Resultado Api TOTVS:\n" +
+                "{\n" +
+                "  \"success\": false,\n" +
+                "  \"error\": \"" + message + "\"\n" +
                 "}";
     }
 
