@@ -13,8 +13,7 @@ public class Init {
 
         String[] optJOp = {
                 "Logar",
-                "Cadastrar Usuario",
-                "Clientes",
+                "Criar Conta",
                 "Encerrar"
         };
 
@@ -28,17 +27,20 @@ public class Init {
 
                     Jopt.showMessage(ApiResponse.loginSuccess(userLogged), "Sistema TOTVS");
 
+                    if (userLogged.getUserType().equalsIgnoreCase("FUNCIONARIO")) {
+                        ClientPanel clientPanel = new ClientPanel();
+                        clientPanel.open();
+                    } else {
+                        Jopt.showMessage(ApiResponse.clientAreaSuccess(), "Área do Cliente");
+                    }
+
                 } else if (opt == 1) {
                     Register registro = new Register();
                     int id = registro.registrar();
 
                     Jopt.showMessage(ApiResponse.registerSuccess(id), "Sistema TOTVS");
 
-                } else if (opt == 2) {
-                    ClientPanel clientPanel = new ClientPanel();
-                    clientPanel.open();
-
-                } else if (opt == 3 || opt == -1) {
+                } else if (opt == 2 || opt == -1) {
                     Jopt.showMessage("Sistema encerrado", "Sistema TOTVS");
                     run = false;
                 }

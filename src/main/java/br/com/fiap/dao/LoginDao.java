@@ -13,14 +13,17 @@ public class LoginDao extends FactoryDao {
 
     public User findUserByName(String userName) throws SQLException {
         ResultSet rs = select(
-                "SELECT USER_ID, USER_NAME, USER_PASSWORD FROM USUARIO WHERE USER_NAME = ?",
+                "SELECT USER_ID, USER_NAME, USER_EMAIL, USER_PASSWORD, USER_TYPE FROM USUARIO WHERE USER_EMAIL = ?",
                 userName
         );
 
         if (rs.next()) {
             User user = new User(
+                    rs.getInt("USER_ID"),
                     rs.getString("USER_NAME"),
-                    rs.getString("USER_PASSWORD")
+                    rs.getString("USER_EMAIL"),
+                    rs.getString("USER_PASSWORD"),
+                    rs.getString("USER_TYPE")
             );
 
             user.setUserId(rs.getInt("USER_ID"));

@@ -13,7 +13,9 @@ public class ApiResponse {
                 "  \"message\": \"Login realizado com sucesso\",\n" +
                 "  \"user\": {\n" +
                 "    \"id\": " + user.getUserId() + ",\n" +
-                "    \"name\": \"" + user.getUserName() + "\"\n" +
+                "    \"name\": \"" + user.getUserName() + "\",\n" +
+                "    \"email\": \"" + user.getUserEmail() + "\",\n" +
+                "    \"type\": \"" + user.getUserType() + "\"\n" +
                 "  }\n" +
                 "}";
     }
@@ -24,6 +26,14 @@ public class ApiResponse {
                 "  \"success\": true,\n" +
                 "  \"message\": \"Usuario cadastrado com sucesso\",\n" +
                 "  \"userId\": " + id + "\n" +
+                "}";
+    }
+
+    public static String clientAreaSuccess() {
+        return "Resultado Api TOTVS:\n" +
+                "{\n" +
+                "  \"success\": true,\n" +
+                "  \"message\": \"Area do cliente acessada com sucesso\"\n" +
                 "}";
     }
 

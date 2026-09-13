@@ -9,11 +9,11 @@ import java.sql.SQLException;
 public class Login {
 
     public User logar() throws SQLException, ClassNotFoundException {
-        String userName = Jopt.input("Digite o seu usuario");
-        String password = Jopt.input("Digite sua senha");
+        String userEmail = Jopt.input("Digite seu email:");
+        String password = Jopt.input("Digite sua senha:");
 
         LoginService loginService = new LoginService();
 
-        return loginService.Login(userName, password);
+        return loginService.Login(userEmail, password);
     }
 }

@@ -12,9 +12,11 @@ public class UserDao extends FactoryDao {
 
     public int createUser(User user) throws SQLException {
         insert(
-                "INSERT INTO USUARIO (USER_NAME, USER_PASSWORD) VALUES (?, ?)",
+                "INSERT INTO USUARIO (USER_NAME, USER_EMAIL, USER_PASSWORD, USER_TYPE) VALUES (?, ?, ?, ?)",
                 user.getUserName(),
-                user.getUserPassword()
+                user.getUserEmail(),
+                user.getUserPassword(),
+                user.getUserType()
         );
 
         ResultSet rs = select(
@@ -35,14 +37,17 @@ public class UserDao extends FactoryDao {
 
     public User findByUserName(String userName) throws SQLException {
         ResultSet rs = select(
-                "SELECT USER_ID, USER_NAME, USER_PASSWORD FROM USUARIO WHERE USER_NAME = ?",
+                "SELECT USER_ID, USER_NAME, USER_EMAIL, USER_PASSWORD, USER_TYPE FROM USUARIO WHERE USER_NAME = ?",
                 userName
         );
 
         if (rs.next()) {
             User user = new User(
+                    rs.getInt("USER_ID"),
                     rs.getString("USER_NAME"),
-                    rs.getString("USER_PASSWORD")
+                    rs.getString("USER_EMAIL"),
+                    rs.getString("USER_PASSWORD"),
+                    rs.getString("USER_TYPE")
             );
 
             user.setUserId(rs.getInt("USER_ID"));

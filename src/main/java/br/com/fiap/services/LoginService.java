@@ -17,7 +17,7 @@ public class LoginService {
             throw new IllegalArgumentException("Usuario não encontrado");
         }
 
-        if (!user.getUserPassword().equals(password)) {
+        if (!user.passwordMatches(password)) {
             throw new IllegalArgumentException("Senha incorreta");
         }
 
