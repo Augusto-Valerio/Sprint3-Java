@@ -11,7 +11,12 @@ public class Init {
         boolean run = true;
         Jopt.showMessage("Bem vindo a simulação de api TOTVS", "Sistema TOTVS");
 
-        String[] optJOp = {"Logar", "Cadastrar Usuario", "Encerrar"};
+        String[] optJOp = {
+                "Logar",
+                "Cadastrar Usuario",
+                "Clientes",
+                "Encerrar"
+        };
 
         while (run) {
             int opt = Jopt.showOption(optJOp);
@@ -29,7 +34,11 @@ public class Init {
 
                     Jopt.showMessage(ApiResponse.registerSuccess(id), "Sistema TOTVS");
 
-                } else if (opt == 2 || opt == -1) {
+                } else if (opt == 2) {
+                    ClientPanel clientPanel = new ClientPanel();
+                    clientPanel.open();
+
+                } else if (opt == 3 || opt == -1) {
                     Jopt.showMessage("Sistema encerrado", "Sistema TOTVS");
                     run = false;
                 }

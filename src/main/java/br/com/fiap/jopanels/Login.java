@@ -9,8 +9,8 @@ import java.sql.SQLException;
 public class Login {
 
     public User logar() throws SQLException, ClassNotFoundException {
-        String userName = Jopt.input("Informe seu usuario");
-        String password = Jopt.input("Informe sua senha");
+        String userName = Jopt.input("Digite o seu usuario");
+        String password = Jopt.input("Digite sua senha");
 
         LoginService loginService = new LoginService();
 

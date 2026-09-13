@@ -8,11 +8,11 @@ import java.sql.SQLException;
 
 public class Register {
     public int registrar() throws SQLException, ClassNotFoundException {
-        String userName = Jopt.input("Informe seu usuario:");
-        String password = Jopt.input("Informe sua nova senha:");
+        String userName = Jopt.input("Digite seu usuário:");
+        String password = Jopt.input("Digite a sua nova senha:");
 
         if (password.length() < 6) {
-            throw new IllegalArgumentException("Senha deve ter no minimo 6 caracteres");
+            throw new IllegalArgumentException("Senha deve ter no mínimo 6 carácteres");
         }
 
         User user = new User(userName, password);
