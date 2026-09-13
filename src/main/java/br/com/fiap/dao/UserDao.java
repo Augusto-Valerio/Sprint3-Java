@@ -11,10 +11,15 @@ public class UserDao extends FactoryDao {
     }
 
     public int createUser(User user) throws SQLException {
-        ResultSet rs = insert(
+        insert(
                 "INSERT INTO USUARIO (USER_NAME, USER_PASSWORD) VALUES (?, ?)",
                 user.getUserName(),
                 user.getUserPassword()
+        );
+
+        ResultSet rs = select(
+                "SELECT USER_ID FROM USUARIO WHERE USER_NAME = ?",
+                user.getUserName()
         );
 
         int id = 0;
