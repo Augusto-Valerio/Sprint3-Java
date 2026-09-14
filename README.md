@@ -154,9 +154,11 @@ As relações entre as tabelas são feitas por chaves estrangeiras, conectando u
 
 ## Diagrama de Classes
 
-O diagrama de classes foi dividido em vistas para facilitar a leitura da estrutura do sistema. Ele apresenta as entidades do domínio, classes de interface, serviços, classes de persistência, utilitários e testes.
+O diagrama de classes foi dividido em páginas para facilitar a leitura da estrutura do sistema. Ele apresenta as entidades do domínio, classes de interface, serviços, classes de persistência, utilitários e testes.
 
 Nos diagramas são apresentados os principais métodos utilizados no funcionamento da aplicação, como login, cadastro, operações de CRUD, validações, geração de insight e acesso ao banco de dados. Construtores, getters, setters e cláusulas `throws` foram omitidos para manter a leitura objetiva.
+
+[Arquivo editável do diagrama de classes](./Diagrama%20de%20Classes%20Sprint3.drawio)
 
 ---
 
@@ -230,7 +232,7 @@ O projeto possui classes com método `main` para testes manuais:
 
 A documentação da Sprint 3 contém capa, sumário, objetivo e escopo, funcionalidades, protótipo com telas, modelo do banco de dados e diagrama de classes atualizado.
 
-[📄 Acessar documentação da Sprint 3](./docs/Documentacao_Sprint3.pdf)
+[📄 Acessar documentação da Sprint 3](./Documentação_Sprint3.pdf)
 
 ---
 
