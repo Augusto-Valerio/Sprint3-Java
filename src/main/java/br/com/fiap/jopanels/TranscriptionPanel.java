@@ -92,11 +92,19 @@ public class TranscriptionPanel {
         TranscriptionDao transcriptionDao = new TranscriptionDao();
         int transcriptionId = transcriptionDao.createTranscription(transcription);
 
+        String sentiment = "NEUTRO";
+
+        if (content.toLowerCase().contains("problema") || content.toLowerCase().contains("erro")) {
+            sentiment = "NEGATIVO";
+        } else if (content.toLowerCase().contains("melhorar") || content.toLowerCase().contains("oportunidade")) {
+            sentiment = "POSITIVO";
+        }
+
         Insight insight = new Insight(
                 transcriptionId,
                 "OPORTUNIDADE",
                 "A conversa possui pontos que podem indicar uma oportunidade para a TOTVS.",
-                "POSITIVO",
+                sentiment,
                 "Analisar a transcrição e avaliar uma proposta de melhoria para o cliente."
         );
 
