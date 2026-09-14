@@ -3,6 +3,8 @@ package br.com.fiap.jopanels;
 import br.com.fiap.dao.MeetingDao;
 import br.com.fiap.dao.TotvsEmployeeDao;
 import br.com.fiap.dao.TranscriptionDao;
+import br.com.fiap.dao.InsightDao;
+import br.com.fiap.entities.Insight;
 import br.com.fiap.entities.Meeting;
 import br.com.fiap.entities.TotvsEmployee;
 import br.com.fiap.entities.Transcription;
@@ -90,7 +92,24 @@ public class TranscriptionPanel {
         TranscriptionDao transcriptionDao = new TranscriptionDao();
         int transcriptionId = transcriptionDao.createTranscription(transcription);
 
+        Insight insight = new Insight(
+                transcriptionId,
+                "OPORTUNIDADE",
+                "A conversa possui pontos que podem indicar uma oportunidade para a TOTVS.",
+                "POSITIVO",
+                "Analisar a transcrição e avaliar uma proposta de melhoria para o cliente."
+        );
+
+        if (!insight.validateDescription()) {
+            throw new IllegalArgumentException("Descrição do insight não pode ficar vazia.");
+        }
+
+        InsightDao insightDao = new InsightDao();
+        insightDao.createInsight(insight);
+
+
         Jopt.showMessage(ApiResponse.transcriptionCreateSuccess(transcriptionId), "Transcrição");
+        Jopt.showMessage(ApiResponse.insightCreateSuccess(insight), "Insight");
     }
 
     private void findTranscriptionById() throws SQLException, ClassNotFoundException {

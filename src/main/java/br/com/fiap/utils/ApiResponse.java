@@ -1,6 +1,7 @@
 package br.com.fiap.utils;
 
 import br.com.fiap.entities.Client;
+import br.com.fiap.entities.Insight;
 import br.com.fiap.entities.Transcription;
 import br.com.fiap.entities.User;
 
@@ -174,6 +175,51 @@ public class ApiResponse {
                 "  \"success\": true,\n" +
                 "  \"message\": \"Transcrição excluída com sucesso\"\n" +
                 "}";
+    }
+
+    public static String insightCreateSuccess(Insight insight) {
+        return "Resultado Api TOTVS:\n" +
+                "{\n" +
+                "  \"success\": true,\n" +
+                "  \"message\": \"Insight gerado com sucesso\",\n" +
+                "  \"insight\": {\n" +
+                "    \"type\": \"" + insight.getType() + "\",\n" +
+                "    \"description\": \"" + insight.getDescription() + "\",\n" +
+                "    \"sentiment\": \"" + insight.getSentiment() + "\",\n" +
+                "    \"actionSuggestion\": \"" + insight.getActionSuggestion() + "\"\n" +
+                "  }\n" +
+                "}";
+    }
+
+    public static String insightListSuccess(ArrayList<Insight> insights) {
+        String json = "Resultado Api TOTVS:\n" +
+                "{\n" +
+                "  \"success\": true,\n" +
+                "  \"insights\": [\n";
+
+        for (int i = 0; i < insights.size(); i++) {
+            Insight insight = insights.get(i);
+
+            json += "    {\n" +
+                    "      \"id\": " + insight.getInsightId() + ",\n" +
+                    "      \"transcriptionId\": " + insight.getTranscriptionId() + ",\n" +
+                    "      \"type\": \"" + insight.getType() + "\",\n" +
+                    "      \"description\": \"" + insight.getDescription() + "\",\n" +
+                    "      \"sentiment\": \"" + insight.getSentiment() + "\",\n" +
+                    "      \"actionSuggestion\": \"" + insight.getActionSuggestion() + "\"\n" +
+                    "    }";
+
+            if (i < insights.size() - 1) {
+                json += ",";
+            }
+
+            json += "\n";
+        }
+
+        json += "  ]\n" +
+                "}";
+
+        return json;
     }
 
     public static String error(String message) {
