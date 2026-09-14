@@ -9,6 +9,7 @@ import br.com.fiap.entities.Meeting;
 import br.com.fiap.entities.TotvsEmployee;
 import br.com.fiap.entities.Transcription;
 import br.com.fiap.entities.User;
+import br.com.fiap.services.InsightService;
 import br.com.fiap.utils.ApiResponse;
 import br.com.fiap.utils.Jopt;
 
@@ -92,25 +93,8 @@ public class TranscriptionPanel {
         TranscriptionDao transcriptionDao = new TranscriptionDao();
         int transcriptionId = transcriptionDao.createTranscription(transcription);
 
-        String sentiment = "NEUTRO";
-
-        if (content.toLowerCase().contains("problema") || content.toLowerCase().contains("erro")) {
-            sentiment = "NEGATIVO";
-        } else if (content.toLowerCase().contains("melhorar") || content.toLowerCase().contains("oportunidade")) {
-            sentiment = "POSITIVO";
-        }
-
-        Insight insight = new Insight(
-                transcriptionId,
-                "OPORTUNIDADE",
-                "A conversa possui pontos que podem indicar uma oportunidade para a TOTVS.",
-                sentiment,
-                "Analisar a transcrição e avaliar uma proposta de melhoria para a empresa atendida."
-        );
-
-        if (!insight.validateDescription()) {
-            throw new IllegalArgumentException("Descrição do insight não pode ficar vazia.");
-        }
+        InsightService insightService = new InsightService();
+        Insight insight = insightService.generateInsight(transcriptionId, content);
 
         InsightDao insightDao = new InsightDao();
         insightDao.createInsight(insight);
