@@ -8,7 +8,10 @@
   <a href="#estrutura-do-projeto">Estrutura</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#banco-de-dados">Banco de Dados</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#diagrama-de-classes">Diagrama de Classes</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#como-executar">Como Executar</a>
+  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#como-executar">Como Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#testes-manuais">Testes Manuais</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#documentação">Documentação</a>
 </p>
 
 ---
@@ -226,6 +229,8 @@ O projeto possui classes com método `main` para testes manuais:
 ## Documentação
 
 A documentação da Sprint 3 contém capa, sumário, objetivo e escopo, funcionalidades, protótipo com telas, modelo do banco de dados e diagrama de classes atualizado.
+
+[📄 Acessar documentação da Sprint 3](./docs/Documentacao_Sprint3.pdf)
 
 ---
 
