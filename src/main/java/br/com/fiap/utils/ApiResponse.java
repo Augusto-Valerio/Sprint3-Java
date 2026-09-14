@@ -1,6 +1,7 @@
 package br.com.fiap.utils;
 
 import br.com.fiap.entities.Client;
+import br.com.fiap.entities.Transcription;
 import br.com.fiap.entities.User;
 
 import java.util.ArrayList;
@@ -108,6 +109,73 @@ public class ApiResponse {
                 "}";
     }
 
+    public static String transcriptionCreateSuccess(int id) {
+        return "Resultado Api TOTVS:\n" +
+                "{\n" +
+                "  \"success\": true,\n" +
+                "  \"message\": \"Transcrição cadastrada com sucesso\",\n" +
+                "  \"transcriptionId\": " + id + "\n" +
+                "}";
+    }
+
+    public static String transcriptionFoundSuccess(Transcription transcription) {
+        return "Resultado Api TOTVS:\n" +
+                "{\n" +
+                "  \"success\": true,\n" +
+                "  \"transcription\": {\n" +
+                "    \"id\": " + transcription.getTranscriptionId() + ",\n" +
+                "    \"meetingId\": " + transcription.getMeetingId() + ",\n" +
+                "    \"content\": \"" + transcription.getContent() + "\",\n" +
+                "    \"processingStatus\": \"" + transcription.getProcessingStatus() + "\"\n" +
+                "  }\n" +
+                "}";
+    }
+
+    public static String transcriptionListSuccess(ArrayList<Transcription> transcriptions) {
+        String json = "Resultado Api TOTVS:\n" +
+                "{\n" +
+                "  \"success\": true,\n" +
+                "  \"transcriptions\": [\n";
+
+        for (int i = 0; i < transcriptions.size(); i++) {
+            Transcription transcription = transcriptions.get(i);
+
+            json += "    {\n" +
+                    "      \"id\": " + transcription.getTranscriptionId() + ",\n" +
+                    "      \"meetingId\": " + transcription.getMeetingId() + ",\n" +
+                    "      \"content\": \"" + transcription.getContent() + "\",\n" +
+                    "      \"processingStatus\": \"" + transcription.getProcessingStatus() + "\"\n" +
+                    "    }";
+
+            if (i < transcriptions.size() - 1) {
+                json += ",";
+            }
+
+            json += "\n";
+        }
+
+        json += "  ]\n" +
+                "}";
+
+        return json;
+    }
+
+    public static String transcriptionUpdateSuccess() {
+        return "Resultado Api TOTVS:\n" +
+                "{\n" +
+                "  \"success\": true,\n" +
+                "  \"message\": \"Transcrição atualizada com sucesso\"\n" +
+                "}";
+    }
+
+    public static String transcriptionDeleteSuccess() {
+        return "Resultado Api TOTVS:\n" +
+                "{\n" +
+                "  \"success\": true,\n" +
+                "  \"message\": \"Transcrição excluída com sucesso\"\n" +
+                "}";
+    }
+
     public static String error(String message) {
         return "Resultado Api TOTVS:\n" +
                 "{\n" +
@@ -115,5 +183,4 @@ public class ApiResponse {
                 "  \"error\": \"" + message + "\"\n" +
                 "}";
     }
-
 }

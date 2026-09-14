@@ -28,10 +28,10 @@ public class Init {
                     Jopt.showMessage(ApiResponse.loginSuccess(userLogged), "Sistema TOTVS");
 
                     if (userLogged.getUserType().equalsIgnoreCase("FUNCIONARIO")) {
-                        ClientPanel clientPanel = new ClientPanel();
-                        clientPanel.open();
+                        TranscriptionPanel transcriptionPanel = new TranscriptionPanel();
+                        transcriptionPanel.open(userLogged);
                     } else {
-                        Jopt.showMessage(ApiResponse.clientAreaSuccess(), "Área do Cliente");
+                        throw new IllegalArgumentException("Acesso permitido apenas para funcionários TOTVS.");
                     }
 
                 } else if (opt == 1) {
