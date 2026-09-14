@@ -13,10 +13,9 @@ public class TranscriptionDao extends FactoryDao {
 
     public int createTranscription(Transcription transcription) throws SQLException {
         insert(
-                "INSERT INTO TRANSCRICAO (ID_REUNIAO, CONTEUDO, STATUS_PROCESSAMENTO) VALUES (?, ?, ?)",
+                "INSERT INTO TRANSCRICAO (ID_REUNIAO, CONTEUDO) VALUES (?, ?)",
                 transcription.getMeetingId(),
-                transcription.getContent(),
-                transcription.getProcessingStatus()
+                transcription.getContent()
         );
 
         ResultSet rs = select(
@@ -36,7 +35,7 @@ public class TranscriptionDao extends FactoryDao {
 
     public Transcription findTranscriptionById(int id) throws SQLException {
         ResultSet rs = select(
-                "SELECT ID_TRANSCRICAO, ID_REUNIAO, CONTEUDO, STATUS_PROCESSAMENTO FROM TRANSCRICAO WHERE ID_TRANSCRICAO = ?",
+                "SELECT ID_TRANSCRICAO, ID_REUNIAO, CONTEUDO FROM TRANSCRICAO WHERE ID_TRANSCRICAO = ?",
                 id
         );
 
@@ -44,8 +43,7 @@ public class TranscriptionDao extends FactoryDao {
             Transcription transcription = new Transcription(
                     rs.getInt("ID_TRANSCRICAO"),
                     rs.getInt("ID_REUNIAO"),
-                    rs.getString("CONTEUDO"),
-                    rs.getString("STATUS_PROCESSAMENTO")
+                    rs.getString("CONTEUDO")
             );
 
             rs.close();
@@ -60,15 +58,14 @@ public class TranscriptionDao extends FactoryDao {
         ArrayList<Transcription> transcriptions = new ArrayList<>();
 
         ResultSet rs = select(
-                "SELECT ID_TRANSCRICAO, ID_REUNIAO, CONTEUDO, STATUS_PROCESSAMENTO FROM TRANSCRICAO ORDER BY ID_TRANSCRICAO"
+                "SELECT ID_TRANSCRICAO, ID_REUNIAO, CONTEUDO FROM TRANSCRICAO ORDER BY ID_TRANSCRICAO"
         );
 
         while (rs.next()) {
             Transcription transcription = new Transcription(
                     rs.getInt("ID_TRANSCRICAO"),
                     rs.getInt("ID_REUNIAO"),
-                    rs.getString("CONTEUDO"),
-                    rs.getString("STATUS_PROCESSAMENTO")
+                    rs.getString("CONTEUDO")
             );
 
             transcriptions.add(transcription);
@@ -81,9 +78,8 @@ public class TranscriptionDao extends FactoryDao {
 
     public void updateTranscription(Transcription transcription) throws SQLException {
         update(
-                "UPDATE TRANSCRICAO SET CONTEUDO = ?, STATUS_PROCESSAMENTO = ? WHERE ID_TRANSCRICAO = ?",
+                "UPDATE TRANSCRICAO SET CONTEUDO = ? WHERE ID_TRANSCRICAO = ?",
                 transcription.getContent(),
-                transcription.getProcessingStatus(),
                 transcription.getTranscriptionId()
         );
     }

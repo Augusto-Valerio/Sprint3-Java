@@ -60,4 +60,11 @@ public class InsightDao extends FactoryDao {
         rs.close();
         return insights;
     }
+
+    public void deleteInsightByTranscriptionId(int transcriptionId) throws SQLException {
+        delete(
+                "DELETE FROM INSIGHT WHERE ID_TRANSCRICAO = ?",
+                transcriptionId
+        );
+    }
 }

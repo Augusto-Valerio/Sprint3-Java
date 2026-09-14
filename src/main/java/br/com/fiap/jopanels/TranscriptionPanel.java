@@ -83,7 +83,7 @@ public class TranscriptionPanel {
         MeetingDao meetingDao = new MeetingDao();
         int meetingId = meetingDao.createMeeting(meeting);
 
-        Transcription transcription = new Transcription(meetingId, content, "PENDENTE");
+        Transcription transcription = new Transcription(meetingId, content);
 
         if (!transcription.validateContent()) {
             throw new IllegalArgumentException("Transcrição não pode ficar vazia.");
@@ -105,7 +105,7 @@ public class TranscriptionPanel {
                 "OPORTUNIDADE",
                 "A conversa possui pontos que podem indicar uma oportunidade para a TOTVS.",
                 sentiment,
-                "Analisar a transcrição e avaliar uma proposta de melhoria para o cliente."
+                "Analisar a transcrição e avaliar uma proposta de melhoria para a empresa atendida."
         );
 
         if (!insight.validateDescription()) {
@@ -156,13 +156,11 @@ public class TranscriptionPanel {
         }
 
         String content = Jopt.input("Informe a nova transcrição:");
-        String status = Jopt.input("Informe o novo status do processamento:");
 
         Transcription updatedTranscription = new Transcription(
                 id,
                 existingTranscription.getMeetingId(),
-                content,
-                status
+                content
         );
 
         if (!updatedTranscription.validateContent()) {
@@ -183,6 +181,9 @@ public class TranscriptionPanel {
         if (transcription == null) {
             throw new IllegalArgumentException("Transcrição não encontrada.");
         }
+
+        InsightDao insightDao = new InsightDao();
+        insightDao.deleteInsightByTranscriptionId(id);
 
         transcriptionDao.deleteTranscription(id);
 

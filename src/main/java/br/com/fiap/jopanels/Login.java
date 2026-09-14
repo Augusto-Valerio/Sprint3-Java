@@ -14,6 +14,6 @@ public class Login {
 
         LoginService loginService = new LoginService();
 
-        return loginService.Login(userEmail, password);
+        return loginService.login(userEmail, password);
     }
 }

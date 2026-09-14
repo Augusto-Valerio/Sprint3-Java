@@ -4,19 +4,16 @@ public class Transcription {
     private int transcriptionId;
     private int meetingId;
     private String content;
-    private String processingStatus;
 
-    public Transcription(int meetingId, String content, String processingStatus) {
+    public Transcription(int meetingId, String content) {
         this.meetingId = meetingId;
         this.content = content;
-        this.processingStatus = processingStatus;
     }
 
-    public Transcription(int transcriptionId, int meetingId, String content, String processingStatus) {
+    public Transcription(int transcriptionId, int meetingId, String content) {
         this.transcriptionId = transcriptionId;
         this.meetingId = meetingId;
         this.content = content;
-        this.processingStatus = processingStatus;
     }
 
     public boolean validateContent() {
@@ -47,11 +44,4 @@ public class Transcription {
         this.content = content;
     }
 
-    public String getProcessingStatus() {
-        return processingStatus;
-    }
-
-    public void setProcessingStatus(String processingStatus) {
-        this.processingStatus = processingStatus;
-    }
 }

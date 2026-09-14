@@ -11,10 +11,10 @@ public class LoginDao extends FactoryDao {
         super();
     }
 
-    public User findUserByName(String userName) throws SQLException {
+    public User findUserByEmail(String userEmail) throws SQLException {
         ResultSet rs = select(
                 "SELECT USER_ID, USER_NAME, USER_EMAIL, USER_PASSWORD, USER_TYPE FROM USUARIO WHERE USER_EMAIL = ?",
-                userName
+                userEmail
         );
 
         if (rs.next()) {

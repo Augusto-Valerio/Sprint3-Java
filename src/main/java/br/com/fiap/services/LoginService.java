@@ -7,11 +7,11 @@ import java.sql.SQLException;
 
 public class LoginService {
 
-    public User Login(String userName, String password) throws SQLException, ClassNotFoundException {
+    public User login(String userEmail, String password) throws SQLException, ClassNotFoundException {
         LoginDao loginDao = new LoginDao();
 
         // Busca o usuario no banco de dados
-        User user = loginDao.findUserByName(userName);
+        User user = loginDao.findUserByEmail(userEmail);
 
         if (user == null) {
             throw new IllegalArgumentException("Usuario não encontrado");
